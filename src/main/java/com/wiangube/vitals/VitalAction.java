@@ -19,7 +19,10 @@ public class VitalAction {
 	@RequestMapping(value = "/reanimate", method = RequestMethod.POST)
 	public Vital reanimate(@RequestBody Vital inputPayload) {
 		Vital reanimate = new Vital();
-		reanimate.setBreathing(true);
+		
+		if (!reanimate.getBreathing()) {
+			reanimate.setBreathing(true);
+		}
 		
 		return reanimate;
 	}
@@ -27,8 +30,14 @@ public class VitalAction {
 	@RequestMapping(value = "/clean", method = RequestMethod.POST)
 	public Vital clean(@RequestBody Vital inputPayload) {
 		Vital clean = new Vital();
-		clean.setClean(true);
-		clean.setBreathing(true);
+		
+		if (!clean.getClean()) {
+			clean.setClean(true);
+		}
+		
+		if (!clean.getBreathing()) {
+			clean.setBreathing(true);
+		}
 		
 		return clean;
 	}
@@ -36,9 +45,18 @@ public class VitalAction {
 	@RequestMapping(value = "/breastfeed", method = RequestMethod.POST)
 	public Vital breastfeed(@RequestBody Vital inputPayload) {
 		Vital breastfeed = new Vital();
-		breastfeed.setHungry(false);
-		breastfeed.setClean(true);
-		breastfeed.setBreathing(true);
+		
+		if (!breastfeed.getHungry()) {
+			breastfeed.setHungry(false);
+		}
+		
+		if (!breastfeed.getClean()) {
+			breastfeed.setClean(true);
+		}
+		
+		if (!breastfeed.getBreathing()) {
+			breastfeed.setBreathing(true);
+		}
 		
 		return breastfeed;
 	}
